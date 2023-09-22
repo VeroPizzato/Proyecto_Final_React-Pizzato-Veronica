@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* HEADER */
+.container-fluid {
+    background-image: linear-gradient(to right, #868484, #d5d1d1);
+    width: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+.navbar-brand{
+    margin-left: 25px;
+}
+
+.img-carrito{
+    margin-right: 25px;
+}
+
+.collapse {
+    flex-direction: row-reverse;
+}
+
+.nav-item a {
+    text-decoration: none;
+    font-size: 20px;
+    margin: 25px;
+}
+
+.nav-item a:hover {
+    color: brown !important;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.active{
+    color: brown !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.btnDetalle:hover {
+    background-color: brown !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.snipper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+
+}
+
+.nombreSnipper{
+    color: brown;
+    font-size: 20px;
+    font-weight: bold;
+}
+
