@@ -1,8 +1,8 @@
-import productos from "../json/productos.json"
 import ItemDetail from "./ItemDetail"
 import Loading from "./Loading";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState();
@@ -10,19 +10,16 @@ const ItemDetailContainer = () => {
     const {idItem} = useParams();  // el useParam me pasa idItem como string
 
     useEffect(() => {
-        const promesa = new Promise((resolve) => {
-            setTimeout(() => {
-                let producto = productos.find(item => item.id === parseInt(idItem))  
-                resolve(producto);
+        const db = getFirestore();
+        const producto = doc(db, "productos", idItem);
+        getDoc(producto).then(resultado => {
+            if (resultado.exists){
+                setItem({id:resultado.id, ...resultado.data()})
                 setCargando(false);
-            }, 2000);
-           
-        });
-
-        promesa.then(data => {
-            setItem(data);
-        }) 
+            }
+        })
     }, [idItem]);
+
 
     if (cargando) return <Loading texto={"Cargando Producto Seleccionado.."} />   
    

@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ItemCount from "./ItemCount";
-import { Link } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({producto}) => {
     const [item, setItem] = useState({});
+    const {addItem} = useContext(CartContext);
+
+    const onAdd = (quantity) => {       
+        addItem(item, quantity);
+    };
 
     useEffect(() => {
         setItem(producto);
@@ -20,7 +25,7 @@ const ItemDetail = ({producto}) => {
                     <h2>{item.nombre}</h2>
                     <p>{item.descripcion}</p>
                     <h3>${item.precio}</h3>                                                                 
-                    <ItemCount cantidadInicial={0} stock={item.stock}/>                                      
+                    <ItemCount cantidadInicial={0} stock={item.stock} onAdd={onAdd}/>                                      
                 </div>
             </div>         
         </div>

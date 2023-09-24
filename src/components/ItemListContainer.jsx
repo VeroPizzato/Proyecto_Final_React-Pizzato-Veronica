@@ -1,34 +1,27 @@
 import {  useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import Loading from "./Loading";
-import productos from "../json/productos.json"
 import { useParams } from "react-router-dom";
+import { collection, getFirestore, getDocs, query, where } from "firebase/firestore";
 
-const asyncMock= (nombre) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if (nombre === undefined){
-                resolve(productos);
-            } else {
-                const productosFiltrados = productos.filter(
-                    producto => producto.categoria === nombre
-                );
-                resolve(productosFiltrados);
-            }
-        }, 2000);
-    });
-};
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
     const [cargando, setCargando] = useState(true);
     const {nombreCategoria} = useParams();
 
-    useEffect(() => {     
-        asyncMock(nombreCategoria).then((data) =>
-        {   
-            setItems(data)
-            setCargando(false);
+    // Acceder a una colleccion de documentos desde firestore
+    useEffect(() => {
+        const db = getFirestore(); 
+        const itemsCollection = collection(db, "productos");
+        const q = nombreCategoria ? query(itemsCollection, where("categoria", "==", nombreCategoria)) : itemsCollection;
+        getDocs(q).then(resultado => {
+            if (resultado.size === 0) {
+                console.log("No hay productos en la coleccion");
+            } else {
+                setItems(resultado.docs.map(producto => ({ id: producto.id, ...producto.data() })));
+                setCargando(false);
+            }
         });
     }, [nombreCategoria]);
 

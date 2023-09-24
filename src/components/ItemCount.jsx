@@ -1,25 +1,29 @@
 import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 
-const ItemCount = ({cantidadInicial, stock}) => {
+const ItemCount = ({cantidadInicial, stock, onAdd}) => {
     const [itemsStock, setItemsStock]  = useState(stock);
-    const [cant, setCant] = useState(cantidadInicial);
+    const [cantidad, setCantidad] = useState(cantidadInicial);
+    const [itemAgregado, setitemAgregado] = useState(false);
 
-    function onAdd() {
-        if (cant <= itemsStock){
-            setItemsStock(itemsStock - cant);
-            setCant(0); // reinicio el contador
+    const addToCart = () => {
+        if (cantidad <= itemsStock) {         
+            setItemsStock(itemsStock - cantidad);
+            setCantidad(0); // reinicio el contador
+            setitemAgregado(true);
+            onAdd(cantidad);
         }
     }
     
     const onIncrease = () => {
-        if (cant < itemsStock){
-            setCant(cant + 1);
+        if (cantidad < itemsStock){
+            setCantidad(cantidad + 1);
         }       
     }
 
     const onDecrease = () => {
-        if (cant > 0){
-            setCant(cant - 1)
+        if (cantidad > 0){
+            setCantidad(cantidad - 1)
         }       
     }
 
@@ -34,14 +38,14 @@ const ItemCount = ({cantidadInicial, stock}) => {
                 <div className="col">
                     <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-light mx-2" onClick={onDecrease}>-</button>
-                        <button type="button" className="btn btn-light mx-2">{cant}</button>
+                        <button type="button" className="btn btn-light mx-2"><h5>{cantidad}</h5></button>
                         <button type="button" className="btn btn-light mx-2" onClick={onIncrease}>+</button>
                     </div>
                 </div>
             </div>
             <div className="row">
-                <div className="col">
-                    <button type="button" className="btn btn-secondary btnDetalle" onClick={() => onAdd()}>Agregar al carrito</button>
+                <div className="col">                
+                    {itemAgregado ? <Link to={"/cart"} className="btn btn-secondary btnCambioColor">Terminar mi Compra </Link> : <button type="button" className="btn btn-secondary btnCambioColor" onClick={() => addToCart()}>Agregar Al Carrito</button>}
                 </div>
             </div>
         </div>        

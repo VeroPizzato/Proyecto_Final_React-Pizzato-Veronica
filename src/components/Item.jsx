@@ -12,7 +12,7 @@ const Item = ({ item }) => {
                     <h6 className="card-text text-center">{item.nombre}</h6> 
                     <h3 className="text-center">${item.precio}</h3>
                 </div>
-                <Link to={"/item/" + item.id} className="btn btn-secondary text-decoration-none text-center btnDetalle">
+                <Link to={"/item/" + item.id} className="btn btn-secondary btnCambioColor text-center">
                     Ver detalle
                 </Link>
             </div>
