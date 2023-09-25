@@ -49,7 +49,7 @@ const Cart = () => {
                                 <td colSpan={5} className="align-middle text-end"><h4>Total de la compra: ${totalMonto()}</h4></td>  
                             </tr>
                             <tr>
-                                <td className="align-middle text-end" colSpan={5} ><Link to={"/checkout"} className="btn btn-secondary btnCambioColor my-2">Finalizar Compra</Link></td>       
+                                <td className="align-middle text-end" colSpan={5} ><Link to={"/checkout"} className="btn btn-secondary btnCambioColor my-2">Checkout</Link></td>       
                             </tr> 
                         </tbody>
                     </table>                

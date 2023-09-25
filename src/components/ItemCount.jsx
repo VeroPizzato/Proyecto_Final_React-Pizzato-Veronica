@@ -1,22 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
 
 const ItemCount = ({cantidadInicial, stock, onAdd}) => {
-    const [itemsStock, setItemsStock]  = useState(stock);
-    const [cantidad, setCantidad] = useState(cantidadInicial);
-    const [itemAgregado, setitemAgregado] = useState(false);
+    const [stockDisponible, setStockDisponible]  = useState(stock);
+    const [cantidad, setCantidad] = useState(cantidadInicial);    
 
     const addToCart = () => {
-        if (cantidad <= itemsStock) {         
-            setItemsStock(itemsStock - cantidad);
-            setCantidad(0); // reinicio el contador
-            setitemAgregado(true);
+        if (cantidad <= stockDisponible) {         
+            setCantidad(0); // reinicio el contador                       
             onAdd(cantidad);
         }
     }
     
     const onIncrease = () => {
-        if (cantidad < itemsStock){
+        if (cantidad < stockDisponible){
             setCantidad(cantidad + 1);
         }       
     }
@@ -28,12 +24,12 @@ const ItemCount = ({cantidadInicial, stock, onAdd}) => {
     }
 
     useEffect(() => {
-        setItemsStock(stock);
+        setStockDisponible(stock);
     }, [stock]);
 
     return ( 
         <div className="container">
-            <h5>Stock Disponible: {itemsStock}</h5> 
+            {/* <h5>Stock Disponible: {itemsStock}</h5>  */}
             <div className="row">
                 <div className="col">
                     <div className="btn-group" role="group" aria-label="Basic example">
@@ -45,7 +41,7 @@ const ItemCount = ({cantidadInicial, stock, onAdd}) => {
             </div>
             <div className="row">
                 <div className="col">                
-                    {itemAgregado ? <Link to={"/cart"} className="btn btn-secondary btnCambioColor">Terminar Compra </Link> : <button type="button" className="btn btn-secondary btnCambioColor" onClick={() => addToCart()}>Agregar Al Carrito</button>}
+                    <button type="button" className="btn btn-secondary btnCambioColor" onClick={() => addToCart()}>Agregar Al Carrito</button>
                 </div>
             </div>
         </div>        
