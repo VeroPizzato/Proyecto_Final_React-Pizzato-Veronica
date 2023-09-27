@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 
 const Item = ({ item }) => {
+  
+    const myStyle = {       
+        height: '600px'
+    };
+
     return (
         // col-md-3: 4 columnas   
         <div className="col-md-3 my-2">
-            <div className="card">
+            <div className="card" style={myStyle}>
                 <Link to={"/item/" + item.id}>
                     <img src={item.imagen} className="cardImagen card-img-top" alt={item.nombre} />
                 </Link>
@@ -16,7 +21,7 @@ const Item = ({ item }) => {
                     Ver detalle
                 </Link>
             </div>
-        </div>
+        </div>          
     )
 }
 
