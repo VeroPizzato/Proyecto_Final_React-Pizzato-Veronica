@@ -12,10 +12,11 @@ const Cart = () => {
                 <div className="row">
                     <div className="col text-center">
                         <div className="alert alert-warning my-2" role="alert"> 
-                            <h1>No hay productos en el carrito</h1>                      
-                        </div>
-                    </div>
-                </div>
+                            <h1>No hay productos en el carrito</h1>   
+                            <p><Link to="/" className="btn btn-secondary btnCambioColor text-center my-2">Volver a HOME</Link></p>                                                  
+                        </div>                                          
+                    </div>                    
+                </div>                
             </div>
         )
     }
@@ -49,7 +50,7 @@ const Cart = () => {
                                 <td colSpan={5} className="align-middle text-end"><h4>Total de la compra: ${totalMonto()}</h4></td>  
                             </tr>
                             <tr>
-                                <td className="align-middle text-end" colSpan={5} ><Link to={"/checkout"} className="btn btn-secondary btnCambioColor my-2">Checkout</Link></td>       
+                                <td className="align-middle text-end" colSpan={5} ><Link to={"/checkout"} className="btn btn-secondary btnCambioColor my-2">Finalizar Compra</Link></td>       
                             </tr> 
                         </tbody>
                     </table>                
