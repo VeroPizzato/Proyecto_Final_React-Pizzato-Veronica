@@ -52,26 +52,7 @@ const CheckOut = () => {
                         </div>
                         <button type="button" className="btn btn-secondary btnCambioColor my-2" onClick={generarOrden}>Generar Orden</button>
                     </form>
-                </div>
-                <div className="col-md-5">
-                    <table className="table">                            
-                        <tbody>                            
-                            {
-                                cart.map(item => (
-                                    <tr key={item.id} >
-                                        <td><img src={item.imagen} alt={item.nombre} width={80} /></td>  
-                                        <td className="align-middle text-center"><h5>{item.nombre}</h5></td>                                
-                                        <td className="align-middle text-center"><h5>{item.quantity} x ${item.precio}</h5></td>
-                                        <td className="align-middle text-center"><h5>${item.quantity * item.precio}</h5></td>                                        
-                                    </tr>
-                                ))
-                            }
-                            <tr>
-                                <td  colSpan={4} className="align-middle text-end"><h4>Total de la compra: ${totalMonto()}</h4></td>   
-                            </tr>
-                        </tbody>
-                    </table>                 
-                </div>
+                </div>               
             </div>
             <div className="row">
                 <div className="col-text-center">

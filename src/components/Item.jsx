@@ -15,7 +15,7 @@ const Item = ({ item }) => {
                 </Link>
                 <div className="card-body">
                     <h6 className="card-text text-center">{item.nombre}</h6> 
-                    <h3 className="text-center">${item.precio}</h3>
+                    <h3 className="text-center">$ {item.precio.toLocaleString()}</h3>
                 </div>
                 <Link to={"/item/" + item.id} className="btn btn-secondary btnCambioColor text-center">
                     Ver detalle
