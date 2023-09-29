@@ -52,11 +52,12 @@ const CheckOut = () => {
                         </div>
                         <button type="button" className="btn btn-secondary btnCambioColor my-2" onClick={generarOrden}>Generar Orden</button>
                     </form>
-                </div>               
+                </div>
+               
             </div>
             <div className="row">
                 <div className="col-text-center">
-                    {orderId ? <Navigate to={"/order/" + orderId} /> : ""};
+                    {orderId ? <Navigate to={"/order/" + orderId} /> : ""}
                 </div>
             </div>
         </div>
