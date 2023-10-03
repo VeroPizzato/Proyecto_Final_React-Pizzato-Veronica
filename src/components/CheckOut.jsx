@@ -25,7 +25,7 @@ const CheckOut = () => {
             Swal.fire({
                 title: 'Por favor, ingrese su nombre.',                           
                 icon: 'warning',  
-                confirmButtonColor: '#d33',                               
+                confirmButtonColor: '#a52a2a',                               
                 confirmButtonText: 'Aceptar',
             })           
             usuario.focus();
@@ -35,7 +35,7 @@ const CheckOut = () => {
             Swal.fire({
                 title: 'Por favor, ingrese un nombre válido.',                           
                 icon: 'warning',  
-                confirmButtonColor: '#d33',                               
+                confirmButtonColor: '#a52a2a',                               
                 confirmButtonText: 'Aceptar',
             })        
             usuario.focus();
@@ -46,7 +46,7 @@ const CheckOut = () => {
             Swal.fire({
                 title: 'Por favor, ingrese un numero de telefono.',                           
                 icon: 'warning',  
-                confirmButtonColor: '#d33',                               
+                confirmButtonColor: '#a52a2a',                               
                 confirmButtonText: 'Aceptar',
             })             
             tel.focus();
@@ -57,7 +57,7 @@ const CheckOut = () => {
                 Swal.fire({
                     title: 'Por favor, ingrese un numero de telefono válido.',                           
                     icon: 'warning',  
-                    confirmButtonColor: '#d33',                               
+                    confirmButtonColor: '#a52a2a',                               
                     confirmButtonText: 'Aceptar',
                 })                 
                 tel.focus();
@@ -69,7 +69,7 @@ const CheckOut = () => {
             Swal.fire({
                 title: 'Por favor, ingrese su correo electrónico.',                           
                 icon: 'warning',  
-                confirmButtonColor: '#d33',                               
+                confirmButtonColor: '#a52a2a',                               
                 confirmButtonText: 'Aceptar',
             })              
             dire.focus();
@@ -79,7 +79,7 @@ const CheckOut = () => {
             Swal.fire({
                 title: 'Por favor, ingrese un correo electrónico válido.',                           
                 icon: 'warning',  
-                confirmButtonColor: '#d33',                               
+                confirmButtonColor: '#a52a2a',                               
                 confirmButtonText: 'Aceptar',
             })              
             dire.focus();
