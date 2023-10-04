@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { collection, getFirestore, addDoc, doc, updateDoc } from "firebase/firestore";
-import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CheckOut = () => {
     const { cart, totalMonto, clear } = useContext(CartContext);
@@ -78,7 +78,7 @@ const CheckOut = () => {
                 icon: 'warning',  
                 confirmButtonColor: '#a52a2a',                               
                 confirmButtonText: 'Aceptar',
-            })     
+            })            
             return false;
         }       
 
@@ -117,6 +117,22 @@ const CheckOut = () => {
         setTelefono(e.target.value) ;
     }
 
+    if (orderId){
+        return (
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col text-center">
+                        <div className="alert alert-light my-3" role="alert">
+                            <h1>GRACIAS POR TU COMPRA!!</h1>
+                            <h3>Tu Orden de Compra es {orderId}.</h3>
+                            <p><Link to="/" className="btn btn-secondary btnCambioColor text-center my-2">Volver a HOME</Link></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="container my-5">
             <div className="row">
@@ -137,12 +153,7 @@ const CheckOut = () => {
                         <button type="button" className="btn btn-secondary btnCambioColor my-2" onClick={generarOrden}>Generar Orden</button>
                     </form>
                 </div>               
-            </div>
-            { <div className="row">
-                <div className="col-text-center">
-                    {orderId ? <Navigate to={"/order/" + orderId} /> : ""}
-                </div>
-            </div> }
+            </div>            
         </div>
     )
 }

@@ -4,7 +4,6 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import CheckOut from './components/CheckOut';
-import Order from './components/Order';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CartProvider from "./context/CartContext";
 
@@ -19,8 +18,7 @@ function App() {
               <Route exact path="/category/:nombreCategoria" element={<ItemListContainer />} />
               <Route exact path="/item/:idItem" element={<ItemDetailContainer />} />    
               <Route exact path={"/cart"} element={<Cart />} />  
-              <Route exact path={"/checkout"} element={<CheckOut />} />
-              <Route exact path={"/order/:orderId"} element={<Order />} /> 
+              <Route exact path={"/checkout"} element={<CheckOut />} />              
               <Route exact path="/*" element={<h1>Error 404 Not Found</h1>} /> 
             </Routes>                   
           </BrowserRouter>
