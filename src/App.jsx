@@ -19,8 +19,8 @@ function App() {
               <Route exact path="/category/:nombreCategoria" element={<ItemListContainer />} />
               <Route exact path="/item/:idItem" element={<ItemDetailContainer />} />    
               <Route exact path={"/cart"} element={<Cart />} />  
-              <Route path={"/checkout"} element={<CheckOut />} />
-              <Route path={"/order/:orderId"} element={<Order />} /> 
+              <Route exact path={"/checkout"} element={<CheckOut />} />
+              <Route exact path={"/order/:orderId"} element={<Order />} /> 
               <Route exact path="/*" element={<h1>Error 404 Not Found</h1>} /> 
             </Routes>                   
           </BrowserRouter>

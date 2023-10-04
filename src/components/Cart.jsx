@@ -37,7 +37,7 @@ const Cart = () => {
                             </tr> 
                             {
                                 cart.map(item => (
-                                    <tr>
+                                    <tr key={item.id}>
                                         <td><img src={item.imagen} alt={item.nombre} width={80} /></td>  
                                         <td className="align-middle text-center"><h5>{item.nombre}</h5></td>                                
                                         <td className="align-middle text-center"><h5>{item.quantity} x $ {item.precio.toLocaleString()}</h5></td>
