@@ -3,22 +3,28 @@ import ItemCount from "./ItemCount";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
-const ItemDetail = ({producto}) => {
-    // const [item, setItem] = useState({});
-    const {addItem} = useContext(CartContext);
+const ItemDetail = ({producto}) => {    
+    const {addItem, getItem} = useContext(CartContext);
     const [cantidad, setCantidad] = useState(0);
     const [stockDisponible, setStockDisponible]  = useState(producto.stock);
 
-    const onAdd = (quantity) => {       
-        // addItem(item, quantity);
+    const onAdd = (quantity) => {      
+      
         addItem(producto, quantity);
         setCantidad(quantity);
         setStockDisponible(stockDisponible - quantity);
     };
 
-    // useEffect(() => {
-    //     setItem(producto);
-    // }, [producto]);
+    function actualizarStock(itemId){
+        const item = getItem(itemId); 
+        if (item){
+            setStockDisponible(stockDisponible - item.quantity)
+        }
+    }
+
+    useEffect(() => {
+        actualizarStock(producto.id);
+    }, []);    
 
     return (      
         // col-md-5:2 columnas
@@ -32,7 +38,7 @@ const ItemDetail = ({producto}) => {
                     <p>{producto.descripcion}</p>
                     <h3>$ {producto.precio.toLocaleString()}</h3>   
                     <h5>Stock Disponible: {stockDisponible}</h5>                                                                                
-                    {cantidad>0 ? <Link to={"/cart"} className="btn btn-secondary btnCambioColor">Finalizar Compra</Link> : <ItemCount cantidadInicial={0} stock={producto.stock} onAdd={onAdd}/>}                                      
+                    {cantidad>0 ? <Link to={"/cart"} className="btn btn-secondary btnCambioColor">Finalizar Compra</Link> : <ItemCount cantidadInicial={0} stock={stockDisponible} onAdd={onAdd}/>}                                      
                 </div>
             </div>         
         </div>
